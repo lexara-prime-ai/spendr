@@ -1,7 +1,7 @@
 // DEBUGGING
 const log = console.log;
 // APP STYLES
-class AppStyles {
+export class AppStyles {
     // METHOD TO IMPORT STYLE SHEETS
     static importStyleSheets() {
     
@@ -38,6 +38,6 @@ class AppStyles {
     }
 }
 
-export default AppStyles.importStyleSheets();
+
 
 

@@ -1,16 +1,16 @@
 // DEBUGGING
 const log = console.log;
 // IMPORTS
-import styles from './Style.js';
+import { Injector } from './helpers/Injector.js';
+import { AppStyles } from './Style.js';
 import header from './components/Header.js';
-import Categories from './components/Categories.js';
+import { Categories } from './components/Categories.js';
 
 class AppRoot extends HTMLElement {
-
     // METHOD FOR RENDERING HTML
     static render() {
 
-        let appContent =  `
+        let appContent = `
         <section id="app-container">
             <div class="balance-card">
                 <div class="balance-card-title">
@@ -114,18 +114,25 @@ class AppRoot extends HTMLElement {
         `;
 
         document.body.innerHTML += appContent;
-        
+
+    }
+
+    // METHOD FOR REGISTERING CUSTOM ELEMENT
+    static define() {
+        customElements.define('app-root', AppRoot);
     }
 
     // METHOD FOR MOUNTING COMPONENTS
     static mount() {
         Categories.render();
     }
-
 }
+
+Injector.add('AppStyles', AppStyles.importStyleSheets());
+Injector.add('Categories', Categories);
 
 // INITIALIZE APP
 AppRoot.render();
 // MOUNT COMPONENTS
 AppRoot.mount();
-AppRoot.define('app-root', AppRoot)
+AppRoot.define();

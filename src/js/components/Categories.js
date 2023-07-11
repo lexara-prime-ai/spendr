@@ -1,7 +1,7 @@
 // DEBUGGING
 const log = console.log;
 
-class Categories {
+export class Categories {
     static render() {
         let categoryContent = `
             <section id="category-container">
@@ -18,5 +18,3 @@ class Categories {
         document.body.appendChild(categoryComponent);
     }
 }
-
-export default Categories;
